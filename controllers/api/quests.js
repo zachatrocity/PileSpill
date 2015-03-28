@@ -10,6 +10,18 @@ router.get('/quests', function (req, res, next) {
   })
 })
 
+router.get('/quests/:id', function (req, res, next) {
+  Question.findById(req.params.id, function(err, quest) {
+        if (err) return next(err);
+        if(quest == null){
+          res.status(404).json({message: 'question not found'});
+        } else {
+          console.log(quest);
+              res.json(quest);
+          }
+    });
+})
+
 router.post('/quests', function (req, res, next) {
   var quest = new Question({body: req.body.body})
   quest.username = req.auth.username

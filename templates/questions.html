@@ -1,10 +1,11 @@
+<button ng-click='askQuestionView()' id="askQuestionButton" class='btn btn-default'>Ask Question</button>
 <h1>Recent Questions</h1>
 <ul class='list-group'>
   <li ng-repeat="question in questions | orderBy:'-date'" class='list-group-item'>
-    <strong>Question: {{ question.title }}</strong>
+    <a ng-href='/#/quest/{{question._id}}'><strong>{{ question.title }}</strong></a>
     <br>
     <span>{{ question.body }}</span>
     <br>
-    <span><strong>-asked by @{{ question.username }}</strong></span>
+    <span>-asked by <strong>@{{ question.username }}</strong> on - {{question.date | date: medium}}</span>
   </li>
 </ul>

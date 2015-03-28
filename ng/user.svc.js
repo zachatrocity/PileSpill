@@ -11,8 +11,8 @@ angular.module('app')
     return $http.post('/api/sessions', {
       username: username, password: password
     }).then(function (response) {
-      svc.token = response.data.token
-      $http.defaults.headers.common['X-Auth'] = response.data
+      window.sessionStorage.token = response.data
+      $http.defaults.headers.common['x-auth'] = response.data
       return svc.getUser()
     })
   }
@@ -22,5 +22,13 @@ angular.module('app')
     }).then(function () {
       return svc.login(username, password)
     })
+  }
+  svc.isLoggedIn = function (){
+    var result = false;
+    if(window.sessionStorage.token){
+      $http.defaults.headers.common['x-auth'] = window.sessionStorage.token
+      result = true;
+    }
+    return result;
   }
 })

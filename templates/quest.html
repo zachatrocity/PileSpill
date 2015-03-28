@@ -1,0 +1,30 @@
+<h1>{{quest.title}}</h1>
+<p>{{quest.body}}<p>
+<p>-asked by <strong>@{{ quest.username }}</strong> on - {{quest.date | date: medium}}<p>
+<br>
+<br>
+
+<h2>{{quest.answerCount}}</h2>
+
+<hr>
+<ul class='list-group' ng-if''>
+  <li ng-repeat="answer in answers | orderBy:'upvotes'" class='list-group-item'>
+    <br>
+    <span>{{ answer.body }}</span>
+    <br>
+    <span>Answered by <strong>@{{ answer.username }}</strong> on - {{quest.date | date: medium}}</span>
+  </li>
+</ul>
+
+<form role='form' ng-if'quest.questionAnswered != true && currentUser'>
+  <div class='form-group'>
+    <div class="input-group">
+      <h1>Your Answer</h1>	 
+      <textarea ng-model="answerBody" class='form-control' rows="4" cols="4"></textarea>
+      <br>
+      <br>
+      <button ng-click='addAnswer()' class='btn btn-success btn-block'>Save Answer</button>
+    </div>
+  </div>
+</form>
+

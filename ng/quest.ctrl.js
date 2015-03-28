@@ -5,7 +5,10 @@ angular.module('app')
       QuestSvc.create({
         username: 'dickeyxxx',
         title:    $scope.title,
-        body:     $scope.postBody
+        body:     $scope.postBody,
+        answersCount: 0,
+        upvote:   0,
+        downvote: 0
       })
       .success(function (question) {
         $scope.questions.unshift(question)
@@ -15,8 +18,22 @@ angular.module('app')
     }
   }
 
+  $scope.askQuestionView = function(){
+    $location.path('/ask');
+  }
+
   QuestSvc.fetch()
   .success(function (questions) {
     $scope.questions = questions
   })
+
+  $scope.getQuestionById = function (id){
+    QuestSvc.fetchById(id).then(function(response){
+      $scope.quest = response;
+    })
+  }
+
+  $scope.addAnswer = function(){
+    console.log("answering");
+  }
 })
