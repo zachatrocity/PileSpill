@@ -33,7 +33,4 @@ angular.module('app')
     })
   }
 
-  $scope.addAnswer = function(){
-    console.log("answering");
-  }
 })
