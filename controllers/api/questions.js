@@ -1,7 +1,7 @@
 var router = require('express').Router()
 var Question = require('../../models/Question')
 
-router.get('/quests', function (req, res, next) {
+router.get('/questions', function (req, res, next) {
   Question.find()
   .sort('-date')
   .exec(function (err, Questions) {
@@ -10,7 +10,7 @@ router.get('/quests', function (req, res, next) {
   })
 })
 
-router.get('/quests/:id', function (req, res, next) {
+router.get('/questions/:id', function (req, res, next) {
   Question.findById(req.params.id, function(err, quest) {
         if (err) return next(err);
         if(quest == null){
@@ -22,7 +22,7 @@ router.get('/quests/:id', function (req, res, next) {
     });
 })
 
-router.post('/quests', function (req, res, next) {
+router.post('/questions', function (req, res, next) {
   var quest = new Question({body: req.body.body})
   quest.username = req.auth.username
   quest.title = req.body.title
