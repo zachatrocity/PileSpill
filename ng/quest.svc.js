@@ -5,7 +5,7 @@ angular.module('app')
   }
   
   this.fetchById = function (id) {
-    return $http.get('/api/quests?id=' + id)
+    return $http.get('/api/quests/' + id)
   }
 
   this.create = function (quest) {

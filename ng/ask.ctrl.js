@@ -3,7 +3,7 @@ angular.module('app')
   $scope.addQuestion = function () {
     if ($scope.postBody) {
       QuestSvc.create({
-        username: 'dickeyxxx',
+        username: $scope.currentUser.username,
         body:     $scope.postBody
       })
       .success(function (question) {

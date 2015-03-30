@@ -10,13 +10,15 @@
         <ul class='nav navbar-nav'>
           <li><a href='/#/'>Questions</a></li>
           <li><a href='/#/ask'>Ask</a></li>
-          <li><a href='/#/register'>Register</a></li>
-          <li><a href='/#/login'>Login</a></li>
+          <li ng-if='!currentUser'><a href='/#/register'>Register</a></li>
+          <li ng-if='!currentUser' ><a href='/#/login'>Login</a></li>
         </ul>
-        <p ng-if='currentUser' class='navbar-text navbar-right'>
-          Signed in as {{currentUser.username}}
-        </p>
-        <button ng-if='currentUser' ng-click='logout()' class='btn btn-default navbar-right'>Logout</button>
+        <ul>
+          <p ng-if='currentUser' class='navbar-text navbar-right'>
+            Signed in as {{currentUser.username}}
+          </p>
+          <p><a ng-if='currentUser' ng-click='logout()' class='navbar-text navbar-right'>Logout</a></p>  
+        </ul>
       </div>
     </nav>
     <div class='container' ng-view></div>

@@ -26,9 +26,14 @@ router.post('/quests', function (req, res, next) {
   var quest = new Question({body: req.body.body})
   quest.username = req.auth.username
   quest.title = req.body.title
+  quest.questionAnswered = false
+  quest.upvote = 0
+  quest.answersCount = 0
+  quest.downvote = 0
   quest.save(function (err, quest) {
     if (err) { return next(err) }
     res.status(201).json(quest)
+    console.log("failed here in server")
   })
 })
 
