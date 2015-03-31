@@ -1,5 +1,5 @@
-angular.module('app')
-.controller('ApplicationCtrl', function ($scope, $location, $window, UserSvc) {
+angular.module('app', ['ngRoute','toastr'])
+.controller('ApplicationCtrl', function ($scope, $location, $window, UserSvc, toastr) {
   $scope.$on('login', function (_, user) {
     $scope.currentUser = user
     $location.path('/')

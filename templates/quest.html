@@ -16,7 +16,13 @@
     <br>
     <span>
       Answered by <strong>@{{ answer.username }}</strong> on - {{quest.date | date: medium}}
-      <a ng-if='currentUser.username = answers[$index].username' href="/#/answer/edit/{{answer._id}}" class=''>Edit</a>
+      <span ng-if='$parent.currentUser.username == answers[$index].username'>
+        <a href="/#/answer/edit/{{answer._id}}" class=''>Edit</a>
+        -
+        <a ng-really-click="deleteAnswer($index)" 
+        ng-really-message="Are you sure you want to delete your answer?" class=''>Delete</a>
+      </span>
+
     </span>
   </li>
 </ul>

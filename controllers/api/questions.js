@@ -103,6 +103,17 @@ router.post('/questions/answer', function (req, res, next) {
   })
 })
 
+//delete an answer
+router.delete('/questions/answer/:id', function(req, res, next){
+  Answer.findByIdAndRemove(req.params.id, function(err, ans) {
+        if (err) return next(err);
+        if(ans == null){
+          res.status(404).json({message: 'answer not found'});
+        } else {
+              res.json(ans);
+          }
+    });
+})
 
 //get all of the answers to specific questions
 router.get('/questions/answer/:id', function (req, res, next) {

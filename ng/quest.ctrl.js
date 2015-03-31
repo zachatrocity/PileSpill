@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('QuestCtrl', function ($scope, QuestSvc, $location) {
+.controller('QuestCtrl', function ($scope, QuestSvc, $location, toastr) {
   $scope.addQuestion = function () {
     if ($scope.postBody) {
       QuestSvc.create({
@@ -18,15 +18,23 @@ angular.module('app')
   }
 
   $scope.upvoteQuestion = function(index){
-    QuestSvc.up({ type: "Question", id: $scope.questions[index]._id}).then(function(quest){
-      $scope.questions[index] = quest.data;
-    })
+    if($scope.currentUser){
+      QuestSvc.up({ type: "Question", id: $scope.questions[index]._id}).then(function(quest){
+        $scope.questions[index] = quest.data;
+      })
+    } else{
+      toastr.error('You must be logged in to vote', 'Error');
+    }
   }
 
   $scope.downvoteQuestion = function(index){
-    QuestSvc.down({ type: "Question", id: $scope.questions[index]._id}).then(function(quest){
-      $scope.questions[index] = quest.data;
-    })
+    if($scope.currentUser){
+      QuestSvc.down({ type: "Question", id: $scope.questions[index]._id}).then(function(quest){
+        $scope.questions[index] = quest.data;
+      })
+    }else{
+      toastr.error('You must be logged in to vote', 'Error');
+    }
   }
 
   $scope.askQuestionView = function(){

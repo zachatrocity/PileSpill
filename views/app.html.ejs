@@ -2,6 +2,8 @@
 <html ng-app='app'>
   <head>
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href="/angular-toastr.css" />
+    <link rel="stylesheet" type="text/css" href="/angular-pagedown.css" />
     <link rel='stylesheet' href='/app.css'>
   </head>
   <body ng-controller='ApplicationCtrl'>
@@ -24,6 +26,11 @@
     <div class='container' ng-view></div>
     <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js'></script>
     <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-route.js'></script>
+    <script src="/Markdown.Converter.js"></script>
+    <script src="/Markdown.Sanitizer.js"></script>
+    <script src="/Markdown.Extra.js"></script>
+    <script src="/Markdown.Editor.js"></script>
+    <script src="/angular-toastr.tpls.js"></script>
     <script src='/app.js'></script>
   </body>
 </html>

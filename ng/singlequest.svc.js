@@ -21,4 +21,8 @@ angular.module('app')
   	return $http.put('/api/questions/down/', obj)
   }
 
+  this.delete = function(obj){
+    return $http.delete('/api/questions/answer/' + obj.id)
+  }
+
 })

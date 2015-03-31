@@ -4,7 +4,8 @@
       <h1>Title</h1>	
       <input class="form-control" type="text" ng-model="title" required>  
       <h1>Question Description</h1>
-      <textarea ng-model="postBody" class='form-control' rows="4" cols="4" placeholder="Ask away" required></textarea>
+      <pagedown-editor content="postBody" show-preview="true"></pagedown-editor>
+      <!-- <textarea ng-model="postBody" class='form-control' rows="4" cols="4" placeholder="Ask away" required></textarea> -->
       <br>
       <br>
       <button ng-click='addQuestion()' class='btn btn-success btn-block'>Ask a Question</button>
