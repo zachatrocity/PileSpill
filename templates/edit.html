@@ -1,0 +1,12 @@
+<form role='form'>
+  <div class='form-group'>
+    <div class="input-group">
+      <h1>Edit your Answer</h1>	
+      <textarea ng-model="answerBody" class='form-control' rows="4" cols="4" required>{{answer.body}}</textarea>
+      <br>
+      <br>
+      <button ng-click='saveEdit()' class='btn btn-success btn-block'>Save</button>
+      <button ng-click='discard()' class='btn btn-success btn-block'>Discard</button>
+    </div>
+  </div>
+</form>

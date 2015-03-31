@@ -13,4 +13,12 @@ angular.module('app')
   	return $http.get('/api/questions/answer/' + id)
   }
 
+  this.up = function(obj) {
+  	return $http.put('/api/questions/up/', obj)
+  }
+
+  this.down = function(obj) {
+  	return $http.put('/api/questions/down/', obj)
+  }
+
 })

@@ -11,4 +11,12 @@ angular.module('app')
   this.create = function (quest) {
     return $http.post('/api/questions', quest)
   }
+
+  this.up = function(obj) {
+  	return $http.put('/api/questions/up/', obj)
+  }
+
+  this.down = function(obj) {
+  	return $http.put('/api/questions/down/', obj)
+  }
 })

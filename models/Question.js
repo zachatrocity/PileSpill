@@ -4,9 +4,8 @@ var Question = db.model('Question', {
   title: 	{ type: String, required: true },
   body:     { type: String, required: true },
   questionAnswered:  { type: Boolean, required: true},
-  upvote:   { type: Number, required: true },
+  votes:   { type: Number, required: true },
   answersCount:  { type: Number, required: true },
-  downvote: { type: Number, required: true },
   date:     { type: Date,   required: true, default: Date.now }
 })
 

@@ -4,25 +4,28 @@
 <br>
 <br>
 
-<h2>{{quest.answerCount}}</h2>
-
-<hr>
-<ul class='list-group' ng-if''>
-  <li ng-repeat="answer in answers | orderBy:'upvotes'" class='list-group-item'>
+<h2 ng-watch="answers" ng-if="answers.length == 0">There are no answers to this question.</h2>
+<br>
+<ul class='list-group'>
+  <li ng-watch="answers" ng-repeat="answer in answers | orderBy:'votes':true" class='list-group-item'>
+    <div ng-click="upvoteAnswer($index)" class="arrow-up"></div>
+    <div class="vote-text"> {{ answer.votes }}</div>
+    <div ng-click="downvoteAnswer($index)" class="arrow-down"></div>
     <br>
     <span>{{ answer.body }}</span>
     <br>
-    <span>Answered by <strong>@{{ answer.username }}</strong> on - {{quest.date | date: medium}}</span>
+    <span>
+      Answered by <strong>@{{ answer.username }}</strong> on - {{quest.date | date: medium}}
+      <a ng-if='currentUser.username = answers[$index].username' href="/#/answer/edit/{{answer._id}}" class=''>Edit</a>
+    </span>
   </li>
 </ul>
 <hr>
-<form role='form' ng-if'quest.questionAnswered != true && currentUser'>
+<form role='form' ng-if='$parent.currentUser && !quest.questionAnswered'>
   <div class='form-group'>
     <div class="input-group">
       <h1>Your Answer</h1>	 
-      <textarea ng-model="answerBody" class='form-control' rows="4" cols="4"></textarea>
-      <br>
-      <br>
+      <textarea ng-model="$parent.answerBody" class='form-control' rows="4" cols="4" placeholder="Answer..."></textarea>
       <button ng-click='addAnswer()' class='btn btn-success btn-block'>Save Answer</button>
     </div>
   </div>

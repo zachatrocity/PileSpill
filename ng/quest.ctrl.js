@@ -7,8 +7,7 @@ angular.module('app')
         title:    $scope.title,
         body:     $scope.postBody,
         answersCount: 0,
-        upvote:   0,
-        downvote: 0
+        votes:   0
       })
       .success(function (question) {
         $scope.questions.unshift(question)
@@ -16,6 +15,18 @@ angular.module('app')
         $location.path('/')
       })
     }
+  }
+
+  $scope.upvoteQuestion = function(index){
+    QuestSvc.up({ type: "Question", id: $scope.questions[index]._id}).then(function(quest){
+      $scope.questions[index] = quest.data;
+    })
+  }
+
+  $scope.downvoteQuestion = function(index){
+    QuestSvc.down({ type: "Question", id: $scope.questions[index]._id}).then(function(quest){
+      $scope.questions[index] = quest.data;
+    })
   }
 
   $scope.askQuestionView = function(){
