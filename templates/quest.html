@@ -8,22 +8,26 @@
 <br>
 <ul class='list-group'>
   <li ng-watch="answers" ng-repeat="answer in answers | orderBy:'votes':true" class='list-group-item'>
-    <div ng-click="upvoteAnswer($index)" class="arrow-up"></div>
-    <div class="vote-text"> {{ answer.votes }}</div>
-    <div ng-click="downvoteAnswer($index)" class="arrow-down"></div>
-    <br>
-    <span>{{ answer.body }}</span>
-    <br>
-    <span>
-      Answered by <strong>@{{ answer.username }}</strong> on - {{quest.date | date: medium}}
-      <span ng-if='$parent.currentUser.username == answers[$index].username'>
-        <a href="/#/answer/edit/{{answer._id}}" class=''>Edit</a>
-        -
-        <a ng-really-click="deleteAnswer($index)" 
-        ng-really-message="Are you sure you want to delete your answer?" class=''>Delete</a>
+    <div class="row">
+    <div class="col-md-1">
+      <div ng-click="upvoteAnswer($index)" class="arrow-up"></div>
+      <div class="vote-text"> {{ answer.votes }}</div>
+      <div ng-click="downvoteAnswer($index)" class="arrow-down"></div>
+    </div>
+    <div class="col-md-11">
+      <span>{{ answer.body }}</span>
+      <br>
+      <span>
+        Answered by <strong>@{{ answer.username }}</strong> on - {{quest.date | date: medium}}
+        <span ng-if='$parent.currentUser.username == answers[$index].username'>
+          <a href="/#/answer/edit/{{answer._id}}" class=''>Edit</a>
+          -
+          <a ng-really-click="deleteAnswer($index)" 
+          ng-really-message="Are you sure you want to delete your answer?" class=''>Delete</a>
+        </span>
       </span>
-
-    </span>
+    </div>
+    </div>
   </li>
 </ul>
 <hr>

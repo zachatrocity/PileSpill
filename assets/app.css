@@ -4,6 +4,14 @@ h1 {
 #askQuestionButton {
   float: right;
 }
+
+
+.vote-text {
+  position: relative;
+  left: 40%;
+}
+
+/*https://css-tricks.com/snippets/css/css-triangle/*/
 .arrow-up {
   width: 0;
   height: 0;
@@ -23,8 +31,4 @@ h1 {
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-top: 20px solid #999;
-}
-.vote-text {
-  position: relative;
-  left: 1.75%;
 }
